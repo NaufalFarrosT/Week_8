@@ -54,6 +54,12 @@ class TodoListFragment : Fragment() {
     }
 
     fun doClick(item:Any){
+        viewModel.updateIsDone(item as Todo)
+    }
+
+    /*
+    fun doClick(item:Any){
         viewModel.clearTask(item as Todo)
     }
+     */
 }

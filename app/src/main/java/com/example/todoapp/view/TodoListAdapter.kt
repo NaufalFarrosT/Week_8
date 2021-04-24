@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.model.Todo
+import com.example.todoapp.viewmodel.DetailTodoViewModel
 import kotlinx.android.synthetic.main.todo_item_layout.view.*
 
 class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Any)->Unit) :RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
@@ -24,7 +25,9 @@ class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Any)->
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        holder.view.checkTask.setText(todoList[position].title+"      "+todoList[position].priority)
+        holder.view.checkTask.setText(todoList[position].title)
+        holder.view.txtPriority.setText(todoList[position].priority.toString())
+        holder.view.txtIsDone.setText(todoList[position].is_done.toString())
 
         holder.view.imgEdit.setOnClickListener {
             val action = TodoListFragmentDirections.actionEditTodoFragment(todoList[position].uuid)
